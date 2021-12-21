@@ -12,9 +12,11 @@ const api = require("./routers/api-router");
 const app = express();
 const server = http.createServer(app);
 
-if (process.env.NODE_ENV === "development") {
-  app.use(express.static(path.join(__dirname, "public")));
-}
+// if (process.env.NODE_ENV === "development") {
+//   app.use(express.static(path.join(__dirname, "public")));
+// }
+
+app.use(express.static(path.join(__dirname, "public")));
 
 async function startServer() {
   await mongoose.connect(process.env.MONGODB_URI);
