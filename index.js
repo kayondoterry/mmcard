@@ -17,9 +17,12 @@ const server = http.createServer(app);
 // }
 
 async function startServer() {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   app.use(express.static(path.join(__dirname, "public")));
-  
+
   app.use("/api", api);
 
   app.get("/*", (_, res) => {
