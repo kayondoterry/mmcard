@@ -16,10 +16,10 @@ const server = http.createServer(app);
 //   app.use(express.static(path.join(__dirname, "public")));
 // }
 
-app.use(express.static(path.join(__dirname, "public")));
-
 async function startServer() {
   await mongoose.connect(process.env.MONGODB_URI);
+  app.use(express.static(path.join(__dirname, "public")));
+  
   app.use("/api", api);
 
   app.get("/*", (_, res) => {
