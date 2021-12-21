@@ -16,24 +16,14 @@ const server = http.createServer(app);
 //   app.use(express.static(path.join(__dirname, "public")));
 // }
 
-async function startServer() {
-  await mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-  app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 
-  app.use("/api", api);
+app.use("/api", api);
 
-  app.get("/*", (_, res) => {
-    res.sendFile(path.resolve(__dirname, "public", "index.html"));
-  });
+app.get("/*", (_, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+});
 
-  server.listen(8000, () => {
-    console.log("Server running on port 8000");
-  });
-}
-
-startServer().catch((err) => {
-  console.log("Top Level Error, Terry: ", err);
+server.listen(8000, () => {
+  console.log("Server running on port 8000");
 });
