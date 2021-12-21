@@ -5,9 +5,17 @@
   "repository": "https://github.com/kayondoterry/mmcard.git",
   "author": "kayondoterry <kayondoterry@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development node"
+  },
   "dependencies": {
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "mongoose": "^6.1.2",
+    "redis": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.1"
   }
 }
