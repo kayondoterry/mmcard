@@ -32,7 +32,7 @@ api.post("/easypay", async (req, res) => {
   const easyPayCallback = new EasyPayCallback({
     data: JSON.stringify(req.body),
   });
-  await EasyPayCallback.bulkSave(easyPayCallback);
+  await EasyPayCallback.bulkSave([easyPayCallback]);
   res.json({ data: "callback url for easy pay" });
 });
 
